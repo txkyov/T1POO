@@ -12,15 +12,15 @@ public class Main {
         int opcion = 0;
 
         System.out.println("===============================================");
-        System.out.println("   SISTEMA DE GESTIÓN - INSTITUTO INNOVA");
+        System.out.println("   SISTEMA DE GESTION - INSTITUTO INNOVA");
         System.out.println("===============================================");
 
         do {
-            System.out.println("\nMenú de Opciones:");
+            System.out.println("\nMenu de Opciones:");
             System.out.println("1. Registrar nuevo alumno");
             System.out.println("2. Listar alumnos registrados");
             System.out.println("3. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
 
             try {
                 opcion = Integer.parseInt(scanner.nextLine());
@@ -33,15 +33,15 @@ public class Main {
                         controller.listarAlumnos();
                         break;
                     case 3:
-                        System.out.println("Saliendo del sistema. ¡Hasta pronto!");
+                        System.out.println("Saliendo del sistema. Hasta pronto!");
                         break;
                     default:
-                        System.out.println("Error: Opción no válida. Intente nuevamente.");
+                        System.out.println("Error: Opcion no valida. Intente nuevamente.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Error: Debe ingresar un número válido.");
+                System.out.println("Error: Debe ingresar un numero valido.");
             } catch (Exception e) {
-                System.out.println("Ocurrió un error inesperado: " + e.getMessage());
+                System.out.println("Ocurrio un error inesperado: " + e.getMessage());
             }
 
         } while (opcion != 3);
@@ -59,23 +59,21 @@ public class Main {
             System.out.print("Tipo de documento (DNI / Residencia Temporal): ");
             String tipoDocumento = scanner.nextLine();
 
-            System.out.print("Número de documento: ");
+            System.out.print("Numero de documento: ");
             String numeroDocumento = scanner.nextLine();
 
-            System.out.print("Nivel socioeconómico (A, B, C): ");
+            System.out.print("Nivel socioeconomico (A/Alto, B/Medio, C/Bajo): ");
             String nivelInput = scanner.nextLine();
-            if (nivelInput.isEmpty()) throw new IllegalArgumentException("El nivel no puede estar vacío.");
-            char nivelSocioeconomico = nivelInput.charAt(0);
 
             System.out.print("Tipo de beca (Ninguna / Parcial / Total): ");
             String tipoBeca = scanner.nextLine();
 
-            Alumno nuevoAlumno = new Alumno(nombre, tipoDocumento, numeroDocumento, nivelSocioeconomico, tipoBeca);
+            Alumno nuevoAlumno = new Alumno(nombre, tipoDocumento, numeroDocumento, nivelInput, tipoBeca);
             controller.agregarAlumno(nuevoAlumno);
 
         } catch (IllegalArgumentException | IllegalStateException e) {
-            System.out.println("\n[ERROR DE VALIDACIÓN] " + e.getMessage());
-            System.out.println("El alumno no fue registrado. Inténtelo de nuevo.");
+            System.out.println("\n[ERROR DE VALIDACION] " + e.getMessage());
+            System.out.println("El alumno no fue registrado. Intentelo de nuevo.");
         }
     }
 }

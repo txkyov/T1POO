@@ -7,7 +7,7 @@ public class Alumno {
     private char nivelSocioeconomico;
     private String tipoBeca;
 
-    public Alumno(String nombre, String tipoDocumento, String numeroDocumento, char nivelSocioeconomico, String tipoBeca) {
+    public Alumno(String nombre, String tipoDocumento, String numeroDocumento, String nivelSocioeconomico, String tipoBeca) {
         this.nombre = nombre;
         setTipoDocumento(tipoDocumento);
         setNumeroDocumento(numeroDocumento);
@@ -20,6 +20,9 @@ public class Alumno {
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacio.");
+        }
         this.nombre = nombre;
     }
 
@@ -28,10 +31,13 @@ public class Alumno {
     }
 
     public void setTipoDocumento(String tipoDocumento) {
+        if (tipoDocumento == null) {
+            throw new IllegalArgumentException("El tipo de documento no puede ser nulo.");
+        }
         if (tipoDocumento.equalsIgnoreCase("DNI") || tipoDocumento.equalsIgnoreCase("Residencia Temporal")) {
             this.tipoDocumento = tipoDocumento;
         } else {
-            throw new IllegalArgumentException("Tipo de documento inválido. Debe ser 'DNI' o 'Residencia Temporal'.");
+            throw new IllegalArgumentException("Tipo de documento invalido. Debe ser 'DNI' o 'Residencia Temporal'.");
         }
     }
 
@@ -41,20 +47,19 @@ public class Alumno {
 
     public void setNumeroDocumento(String numeroDocumento) {
         if (this.tipoDocumento == null) {
-            throw new IllegalStateException("Debe asignar el tipo de documento antes del número.");
+            throw new IllegalStateException("Debe asignar el tipo de documento antes del numero.");
         }
-        
         if (this.tipoDocumento.equalsIgnoreCase("DNI")) {
             if (numeroDocumento.length() == 8 && numeroDocumento.matches("\\d+")) {
                 this.numeroDocumento = numeroDocumento;
             } else {
-                throw new IllegalArgumentException("El DNI debe tener exactamente 8 dígitos numéricos.");
+                throw new IllegalArgumentException("El DNI debe tener exactamente 8 digitos numericos.");
             }
         } else if (this.tipoDocumento.equalsIgnoreCase("Residencia Temporal")) {
             if (numeroDocumento.length() == 11 && numeroDocumento.matches("\\d+")) {
                 this.numeroDocumento = numeroDocumento;
             } else {
-                throw new IllegalArgumentException("El Carné de Residencia Temporal debe tener exactamente 11 dígitos numéricos.");
+                throw new IllegalArgumentException("El Carne de Residencia Temporal debe tener 11 digitos numericos.");
             }
         }
     }
@@ -63,12 +68,19 @@ public class Alumno {
         return nivelSocioeconomico;
     }
 
-    public void setNivelSocioeconomico(char nivelSocioeconomico) {
-        char nivel = Character.toUpperCase(nivelSocioeconomico);
-        if (nivel == 'A' || nivel == 'B' || nivel == 'C') {
-            this.nivelSocioeconomico = nivel;
+    public void setNivelSocioeconomico(String nivelSocioeconomico) {
+        if (nivelSocioeconomico == null || nivelSocioeconomico.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nivel no puede estar vacio.");
+        }
+        String nivel = nivelSocioeconomico.trim().toLowerCase();
+        if (nivel.equals("a") || nivel.equals("alto")) {
+            this.nivelSocioeconomico = 'A';
+        } else if (nivel.equals("b") || nivel.equals("medio")) {
+            this.nivelSocioeconomico = 'B';
+        } else if (nivel.equals("c") || nivel.equals("bajo")) {
+            this.nivelSocioeconomico = 'C';
         } else {
-            throw new IllegalArgumentException("El nivel socioeconómico debe ser 'A', 'B' o 'C'.");
+            throw new IllegalArgumentException("Nivel invalido. Debe ser Alto(A), Medio(B) o Bajo(C).");
         }
     }
 
@@ -77,12 +89,15 @@ public class Alumno {
     }
 
     public void setTipoBeca(String tipoBeca) {
+        if (tipoBeca == null) {
+            throw new IllegalArgumentException("El tipo de beca no puede ser nulo.");
+        }
         if (tipoBeca.equalsIgnoreCase("Ninguna") || 
             tipoBeca.equalsIgnoreCase("Parcial") || 
             tipoBeca.equalsIgnoreCase("Total")) {
             this.tipoBeca = tipoBeca;
         } else {
-            throw new IllegalArgumentException("El tipo de beca debe ser 'Ninguna', 'Parcial' o 'Total'.");
+            throw new IllegalArgumentException("Beca invalida. Debe ser 'Ninguna', 'Parcial' o 'Total'.");
         }
     }
 
@@ -112,7 +127,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return String.format("Alumno: %s | Documento: %s (%s) | Nivel: %c | Beca: %s | Pensión a pagar: S/ %.2f",
+        return String.format("Alumno: %s | Doc: %s (%s) | Nivel: %c | Beca: %s | Pension a pagar: S/ %.2f",
                 nombre, tipoDocumento, numeroDocumento, nivelSocioeconomico, tipoBeca, calcularPensionFinal());
     }
 }

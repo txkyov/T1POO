@@ -40,15 +40,14 @@ A partir del caso, se han identificado las siguientes restricciones críticas pa
 
 ## 3. Alternativas de Solución y Mejor Opción
 
-**Alternativa A: Sistema Web en la Nube con Base de Datos Relacional**
-*   *Pro:* Centralización total y acceso desde cualquier lugar.
-*   *Contra:* Requiere pago de servidores, mayor tiempo de desarrollo e inversión económica (viola la restricción 1 y 2).
+A continuación se presenta un cuadro comparativo con las alternativas planteadas en base a las restricciones del proyecto:
 
-**Alternativa B: Aplicación Ligera de Consola / Escritorio en Java (POO)**
-*   *Pro:* Se ejecuta localmente consumiendo muy pocos recursos (cumple restricción de hardware). Al usar Java y POO, se pueden programar las validaciones estrictas y encapsular la lógica sin requerir un equipo de desarrollo grande. No genera costos extra.
-*   *Contra:* Interfaz menos gráfica, pero 100% funcional y rápida de implementar.
+| Alternativa de Solución | Pros (Ventajas) | Contras (Desventajas) | Viabilidad |
+| :--- | :--- | :--- | :--- |
+| **A. Sistema Web en la Nube con Base de Datos** | Centralización total de datos y acceso remoto desde cualquier lugar. | Requiere pago de servidores, mayor tiempo de desarrollo e inversión económica alta (viola la restricción de bajo presupuesto). | ❌ Inviable |
+| **B. Aplicación Ligera de Consola en Java (POO)** | Se ejecuta localmente consumiendo muy pocos recursos (cumple restricción de hardware). Permite programar validaciones estrictas y encapsular la lógica. No genera costos extra. | Interfaz menos gráfica o llamativa para el usuario final, pero es 100% funcional. | ✅ Viable |
 
-**Mejor opción elegida:** La **Alternativa B**. Un sistema ligero implementado en Java utilizando el paradigma de Programación Orientada a Objetos. Cumple con el bajo presupuesto, utiliza el hardware existente y permite resolver el problema de integridad de datos mediante el encapsulamiento y validaciones.
+**Mejor opción elegida:** La **Alternativa B**. Un sistema ligero implementado en Java utilizando el paradigma de Programación Orientada a Objetos. Cumple perfectamente con el bajo presupuesto, se puede ejecutar en el hardware existente del laboratorio y soluciona el problema de integridad de datos.
 
 ---
 

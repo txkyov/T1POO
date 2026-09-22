@@ -2,21 +2,28 @@
 
 ## 1. Diagrama de Ishikawa (Causa-Efecto)
 
-**Problema Principal:** Caos en la gestión de la información, falta de integridad de datos y errores en el cálculo de pensiones.
+**Problema Principal / Efecto (Cabeza):** Gestión deficiente de la información de alumnos y pensiones.
 
-*   **Personas (Mano de Obra):**
-    *   Una sola administradora (Regina) supervisando todo.
-    *   Alumnos con nombres homónimos (mismo nombre), difíciles de distinguir.
-*   **Métodos (Procesos):**
-    *   Asignación de tarifas y becas de forma manual.
-    *   Falta de un proceso de validación automática para documentos de identidad.
-*   **Máquinas (Herramientas / Sistema):**
-    *   Uso de múltiples archivos Excel desconectados y carpetas físicas.
-    *   Ausencia de un software centralizado con reglas de validación.
-*   **Entorno:**
-    *   Crecimiento de la comunidad (más de 500 alumnos) que hace insostenible el manejo manual.
-*   **Políticas / Reglas:**
-    *   Reglas estrictas de becas (Parcial 50%, Total 100%) y niveles socioeconómicos (A, B, C) que actualmente se calculan manualmente, propiciando errores.
+**Causas (Espinas):**
+
+*   **Identificación (Arriba 1):**
+    *   Falta validar dígitos exactos por tipo de documento.
+    *   Falta identificar si es DNI o Residencia Temporal.
+*   **Nombre Completo (Arriba 2):**
+    *   Problemas de homonimia no controlados.
+    *   Falta distinguir alumnos que tienen el mismo nombre.
+*   **Categorización (Arriba 3):**
+    *   Error al categorizar el porcentaje de beca (0%, 50%, 100%).
+    *   Cálculo erróneo de la pensión final por nivel (A, B, C).
+*   **Gestión Manual (Abajo 1):**
+    *   Registro y cálculos hechos a mano.
+    *   Supervisión dependiente de una sola persona (Regina).
+*   **Volumen / Contacto (Abajo 2):**
+    *   Más de 500 alumnos que administrar al día.
+*   **Tecnología Utilizada (Abajo 3):**
+    *   Múltiples hojas de cálculo (Excel) dispersas.
+    *   Carpetas físicas ocupando espacio en la oficina.
+    *   Falta de manejo centralizado (software).
 
 ---
 

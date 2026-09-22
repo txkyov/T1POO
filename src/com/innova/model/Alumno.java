@@ -4,8 +4,8 @@ public class Alumno {
     private String nombre;
     private String tipoDocumento;
     private String numeroDocumento;
-    private char nivelSocioeconomico; // 'A', 'B', 'C'
-    private String tipoBeca; // "Ninguna", "Parcial", "Total"
+    private char nivelSocioeconomico;
+    private String tipoBeca;
 
     public Alumno(String nombre, String tipoDocumento, String numeroDocumento, char nivelSocioeconomico, String tipoBeca) {
         this.nombre = nombre;
@@ -97,11 +97,11 @@ public class Alumno {
 
     private double obtenerPorcentajeDescuento() {
         if (this.tipoBeca.equalsIgnoreCase("Parcial")) {
-            return 0.50; // 50% de descuento
+            return 0.50;
         } else if (this.tipoBeca.equalsIgnoreCase("Total")) {
-            return 1.00; // 100% de descuento (queda exento)
+            return 1.00;
         }
-        return 0.0; // Sin beca
+        return 0.0;
     }
 
     public double calcularPensionFinal() {

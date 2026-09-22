@@ -13,7 +13,6 @@ public class AlumnoController {
 
     public void agregarAlumno(Alumno alumno) {
         if (alumno != null) {
-            // Validación de homonimia simple (mismo nombre y documento)
             for (Alumno a : listaAlumnos) {
                 if (a.getNumeroDocumento().equals(alumno.getNumeroDocumento())) {
                     throw new IllegalArgumentException("Ya existe un alumno registrado con el mismo número de documento.");

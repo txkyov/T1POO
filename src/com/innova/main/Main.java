@@ -70,14 +70,10 @@ public class Main {
             System.out.print("Tipo de beca (Ninguna / Parcial / Total): ");
             String tipoBeca = scanner.nextLine();
 
-            // Instanciamos el alumno. Aquí se validan los datos gracias al encapsulamiento.
             Alumno nuevoAlumno = new Alumno(nombre, tipoDocumento, numeroDocumento, nivelSocioeconomico, tipoBeca);
-            
-            // Agregamos al controlador
             controller.agregarAlumno(nuevoAlumno);
 
         } catch (IllegalArgumentException | IllegalStateException e) {
-            // Manejo de errores específicos de validación para evitar que el programa termine
             System.out.println("\n[ERROR DE VALIDACIÓN] " + e.getMessage());
             System.out.println("El alumno no fue registrado. Inténtelo de nuevo.");
         }
